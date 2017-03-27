@@ -57,5 +57,11 @@ new Vue({
             this.notaActivaId = null;
             this.mostrandoNota = false;
         },
+
+        borrarNota: function() {
+            this.notas = this.notas.filter(nota => nota.id !== this.notaActivaId)
+            this.notaActivaId = null;
+            this.mostrandoNota = false;
+        }
     },
 });
