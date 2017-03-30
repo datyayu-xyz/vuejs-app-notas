@@ -7,7 +7,7 @@ new Vue({
         notas: [],
         notaActivaId: null,
         creandoNota: false,
-        mostrandoNota: false,
+        pantalla: 'lista',
     },
 
     computed: {
@@ -24,7 +24,7 @@ new Vue({
         crearNota: function() {
             this.titulo = '';
             this.texto = '';
-            this.creandoNota = true;
+            this.pantalla = 'nueva';
         },
 
         guardarNota: function() {
@@ -40,28 +40,28 @@ new Vue({
             };
 
             this.notas.push(nota);
-            this.creandoNota = false;
+            this.pantalla = 'lista';
         },
 
         cancelarNota: function() {
             this.areaActiva = '';
-            this.creandoNota = false;
+            this.pantalla = 'lista';
         },
 
         mostrarNota: function(id) {
             this.notaActivaId = id;
-            this.mostrandoNota = true;
+            this.pantalla = 'nota';
         },
 
         ocultarNota: function() {
             this.notaActivaId = null;
-            this.mostrandoNota = false;
+            this.pantalla = 'lista';
         },
 
         borrarNota: function() {
             this.notas = this.notas.filter(nota => nota.id !== this.notaActivaId)
             this.notaActivaId = null;
-            this.mostrandoNota = false;
+            this.pantalla = 'lista';
         }
     },
 });

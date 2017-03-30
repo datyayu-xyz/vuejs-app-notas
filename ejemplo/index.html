@@ -19,7 +19,7 @@
         <h1>App de notas</h1>
 
 
-        <template v-if="!creandoNota && !mostrandoNota">
+        <template v-if="pantalla === 'lista'">
             <div class="card">
                 <ul class="list-group list-group-flush">
                     <li v-for="nota in notas" @click="mostrarNota(nota.id)" class="list-group-item">
@@ -32,7 +32,7 @@
         </template>
 
 
-        <template v-if="creandoNota">
+        <template v-if="pantalla === 'nueva'">
             <div class="form-group">
                 <label>Titulo</label>
                 <input type="text" v-model="titulo" class="form-control">
@@ -49,7 +49,7 @@
         </template>
 
 
-        <template v-if="mostrandoNota">
+        <template v-if="pantalla === 'nota'">
             <h2> {{ notaActiva.titulo }} </h2>
             <p> {{ notaActiva.texto }} </p>
             <button @click="ocultarNota" class="btn btn-default"> Regresar </button>
